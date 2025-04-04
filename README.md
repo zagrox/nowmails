@@ -1,5 +1,7 @@
 # NowMails
 
+Delivering the Future of Email, Now.
+
 A powerful email marketing solution integrated with ElasticEmail API v2 for WordPress.
 
 ## Features
@@ -87,4 +89,4 @@ This project is licensed under the GPL v2 or later - see the [LICENSE](LICENSE) 
 
 ## Support
 
-For support, please open an issue in the GitHub repository or contact us at support@nowmails.com. 
+For support, please open an issue in the GitHub repository or contact us at support@nowmails.com.
