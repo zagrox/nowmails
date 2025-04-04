@@ -1,0 +1,171 @@
+.nowmails-admin-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.nowmails-admin-card {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.nowmails-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.stat-item {
+    text-align: center;
+    padding: 15px;
+    background: #f8f9fa;
+    border-radius: 4px;
+}
+
+.stat-item h3 {
+    margin: 0 0 10px;
+    font-size: 14px;
+    color: #666;
+}
+
+.stat-item p {
+    margin: 0;
+    font-size: 24px;
+    font-weight: bold;
+    color: #0073aa;
+}
+
+.nowmails-form-group {
+    margin-bottom: 15px;
+}
+
+.nowmails-form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 600;
+}
+
+.nowmails-form-group input[type="text"],
+.nowmails-form-group input[type="email"],
+.nowmails-form-group input[type="password"],
+.nowmails-form-group select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.nowmails-form-group .description {
+    margin-top: 5px;
+    color: #666;
+    font-size: 13px;
+}
+
+.nowmails-button {
+    display: inline-block;
+    padding: 8px 16px;
+    background: #0073aa;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background 0.3s ease;
+}
+
+.nowmails-button:hover {
+    background: #005177;
+}
+
+.nowmails-button.secondary {
+    background: #f0f0f0;
+    color: #333;
+}
+
+.nowmails-button.secondary:hover {
+    background: #e0e0e0;
+}
+
+.nowmails-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.nowmails-table th,
+.nowmails-table td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.nowmails-table th {
+    background: #f8f9fa;
+    font-weight: 600;
+}
+
+.nowmails-table tr:hover {
+    background: #f8f9fa;
+}
+
+.nowmails-status {
+    display: inline-block;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.nowmails-status.active {
+    background: #d4edda;
+    color: #155724;
+}
+
+.nowmails-status.inactive {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+.nowmails-status.pending {
+    background: #fff3cd;
+    color: #856404;
+}
+
+.nowmails-tabs {
+    margin-bottom: 20px;
+    border-bottom: 1px solid #ddd;
+}
+
+.nowmails-tab {
+    display: inline-block;
+    padding: 10px 20px;
+    margin-right: 5px;
+    border: 1px solid transparent;
+    border-bottom: none;
+    border-radius: 4px 4px 0 0;
+    cursor: pointer;
+    text-decoration: none;
+    color: #666;
+}
+
+.nowmails-tab.active {
+    background: #fff;
+    border-color: #ddd #ddd #fff;
+    color: #0073aa;
+}
+
+.nowmails-tab:hover {
+    color: #0073aa;
+}
+
+.nowmails-tab-content {
+    display: none;
+}
+
+.nowmails-tab-content.active {
+    display: block;
+} 
