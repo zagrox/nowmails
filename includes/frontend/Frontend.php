@@ -4,10 +4,12 @@ namespace NowMails\Frontend;
 class Frontend {
     private $plugin_name;
     private $version;
+    private $navigation;
 
     public function __construct($plugin_name, $version) {
         $this->plugin_name = $plugin_name;
         $this->version = $version;
+        $this->navigation = new Navigation();
     }
 
     public function enqueue_styles() {
@@ -18,6 +20,17 @@ class Frontend {
             $this->version,
             'all'
         );
+
+        wp_enqueue_style(
+            $this->plugin_name . '-frontend',
+            NOWMAILS_PLUGIN_URL . 'assets/css/frontend.css',
+            array(),
+            $this->version,
+            'all'
+        );
+
+        // Enqueue WordPress dashicons
+        wp_enqueue_style('dashicons');
     }
 
     public function enqueue_scripts() {
@@ -29,15 +42,24 @@ class Frontend {
             false
         );
 
-        wp_localize_script($this->plugin_name, 'nowmailsPublic', array(
+        wp_enqueue_script(
+            $this->plugin_name . '-frontend',
+            NOWMAILS_PLUGIN_URL . 'assets/js/frontend.js',
+            array('jquery'),
+            $this->version,
+            false
+        );
+
+        wp_localize_script($this->plugin_name . '-frontend', 'nowmailsFrontend', array(
             'ajaxurl' => admin_url('admin-ajax.php'),
-            'nonce' => wp_create_nonce('nowmails_public_nonce')
+            'nonce' => wp_create_nonce('nowmails_frontend_nonce')
         ));
     }
 
     // Shortcode for email subscription form
     public function register_shortcodes() {
         add_shortcode('nowmails_subscribe', array($this, 'render_subscription_form'));
+        add_shortcode('nowmails_dashboard', array($this, 'render_dashboard'));
     }
 
     public function render_subscription_form($atts) {
@@ -64,6 +86,53 @@ class Frontend {
                 <div class="form-message success" style="display: none;"><?php echo esc_html($atts['success_message']); ?></div>
                 <div class="form-message error" style="display: none;"><?php echo esc_html($atts['error_message']); ?></div>
             </form>
+        </div>
+        <?php
+        return ob_get_clean();
+    }
+
+    public function render_dashboard() {
+        if (!is_user_logged_in()) {
+            return '<p>' . __('Please log in to access the dashboard.', 'nowmails') . '</p>';
+        }
+
+        ob_start();
+        ?>
+        <div class="nowmails-frontend">
+            <?php echo $this->navigation->render(); ?>
+            <div class="nowmails-content">
+                <div class="nowmails-section">
+                    <div class="section-header">
+                        <h2 class="section-title"><?php _e('Welcome to NowMails', 'nowmails'); ?></h2>
+                    </div>
+                    <div class="dashboard-grid">
+                        <div class="dashboard-card card-emails">
+                            <div class="card-header">
+                                <h3 class="card-title"><?php _e('Emails Sent', 'nowmails'); ?></h3>
+                            </div>
+                            <p class="card-value">0</p>
+                        </div>
+                        <div class="dashboard-card card-opens">
+                            <div class="card-header">
+                                <h3 class="card-title"><?php _e('Open Rate', 'nowmails'); ?></h3>
+                            </div>
+                            <p class="card-value">0%</p>
+                        </div>
+                        <div class="dashboard-card card-clicks">
+                            <div class="card-header">
+                                <h3 class="card-title"><?php _e('Click Rate', 'nowmails'); ?></h3>
+                            </div>
+                            <p class="card-value">0%</p>
+                        </div>
+                        <div class="dashboard-card card-contacts">
+                            <div class="card-header">
+                                <h3 class="card-title"><?php _e('Total Contacts', 'nowmails'); ?></h3>
+                            </div>
+                            <p class="card-value">0</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
         <?php
         return ob_get_clean();

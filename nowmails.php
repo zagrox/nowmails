@@ -4,8 +4,8 @@
  * Plugin URI: https://nowmails.com
  * Description: A powerful email marketing solution integrated with ElasticEmail API v2 for resellers
  * Version: 1.0.0
- * Author: Your Company
- * Author URI: https://yourcompany.com
+ * Author: ZAGROX
+ * Author URI: https://zagrox.com
  * Text Domain: nowmails
  * Domain Path: /languages
  * Requires at least: 5.8
